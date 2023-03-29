@@ -1,15 +1,15 @@
 // packages
 import React from 'react';
 import styled from 'styled-components';
+import GoogleButton from 'react-google-button';
 
 // components
-import Footer from './Footer';
-import Home from '../Content/Home';
-import Service from '../Content/Service';
-import About from '../Content/About';
-// import Projects from '../Content/Projects';
+import { useLocation } from 'react-router-dom';
+import Footer from '../../LayoutWrapper/Footer';
 
-import * as color from '../../constants/colors';
+// methods
+import { signInWithGoogle } from '../../../api/firebase/init';
+import * as color from '../../../constants/colors';
 
 const StyledWrap = styled.div`
   width: 100vw;
@@ -28,18 +28,20 @@ const StyledContent = styled.div`
   align-items: center;
 `;
 
-function Main(props: { isMobile: boolean }): JSX.Element {
-  const { isMobile } = props;
+function Index(): JSX.Element {
+  const location = useLocation();
+  console.log('Index', location);
+
   return (
     <StyledWrap>
-      <Home isMobile={isMobile} />
       <StyledContent>
-        <Service />
-        <About isMobile={isMobile} />
+        <div style={{ height: 500 }}>
+          <GoogleButton onClick={() => signInWithGoogle()} />
+        </div>
         <Footer />
       </StyledContent>
     </StyledWrap>
   );
 }
 
-export default Main;
+export default Index;

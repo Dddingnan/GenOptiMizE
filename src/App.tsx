@@ -9,6 +9,7 @@ import useCheckMobileScreen from 'method/checkDevice';
 import { ResetStyle, GlobalStyle } from 'method/globalStyle';
 import Header from './components/LayoutWrapper/Header';
 import Main from './components/LayoutWrapper/Main';
+import Service from './components/Content/Service/index';
 import 'react-toastify/dist/ReactToastify.css';
 
 const StyledWrap = styled.div`
@@ -37,6 +38,7 @@ function Content(): JSX.Element {
     <StyledWrap>
       <Header isMobile={isMobile} />
       <Switch>
+        <Route path="/service" component={() => <Service />} />
         <Route path="/" component={() => <Main isMobile={isMobile} />} />
       </Switch>
     </StyledWrap>

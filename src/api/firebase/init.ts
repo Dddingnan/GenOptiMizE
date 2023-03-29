@@ -1,5 +1,7 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore';
+import firebase from 'firebase/compat/app';
+import { initializeApp } from 'firebase/app';
+
+import { GoogleAuthProvider, getAuth, signOut, signInWithRedirect } from 'firebase/auth';
 
 const FIREBASE_INIT_PARAMS = {
   apiKey: 'AIzaSyBz_PzGHgg2nKZQo2LZ9desr9rIp0l8NiI',
@@ -10,9 +12,20 @@ const FIREBASE_INIT_PARAMS = {
   appId: '1:1083557264255:web:3f2cf0bdda0debefd3f84a',
 };
 
-if (Object.values(FIREBASE_INIT_PARAMS).every((v) => !!v)) {
-  firebase.initializeApp(FIREBASE_INIT_PARAMS);
-}
+const app = initializeApp(FIREBASE_INIT_PARAMS);
+const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
 
-export default firebase;
-export const db = firebase.firestore();
+const signInWithGoogle = async (): Promise<void> => {
+  try {
+    await signInWithRedirect(auth, googleProvider);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const logout = (): void => {
+  signOut(auth);
+};
+
+export { auth, signInWithGoogle, logout, firebase };

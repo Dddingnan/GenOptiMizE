@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { sanitizeHtml } from 'method';
 import * as color from 'constants/colors';
+import { useHistory } from 'react-router-dom';
 
 import image1 from 'assets/gene.jpeg';
 import image2 from 'assets/medicine.jpeg';
@@ -111,15 +112,19 @@ const data = [
     title: 'Provider',
     content: `Explore our genetic test catalog. <br> Genetic tests can inform personalized medication plans and detect drug interactions for safer use.`,
     url: image1,
+    redirectUrl: '?type=provider',
   },
   {
     title: 'Patient',
     content: `Start your journey to better health. <br> Consult with a licensed pharmacist to ensure that you are taking medications safely and effectively.`,
     url: image2,
+    redirectUrl: '?type=patient',
   },
 ];
 
 function Service(): JSX.Element {
+  const history = useHistory();
+
   return (
     <StyledWrap id="services">
       <StyledTitleWrap>
@@ -133,7 +138,9 @@ function Service(): JSX.Element {
             <StyledDowner>
               <StyledInnerTitle dangerouslySetInnerHTML={{ __html: sanitizeHtml(val.title) }} />
               <StyledInnerContent dangerouslySetInnerHTML={{ __html: sanitizeHtml(val.content) }} />
-              <StyledButton>Get Started</StyledButton>
+              <StyledButton onClick={() => history.push(`/service${val.redirectUrl}`)}>
+                Get Started
+              </StyledButton>
             </StyledDowner>
           </StyledContent>
         ))}
