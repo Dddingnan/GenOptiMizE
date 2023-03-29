@@ -1,0 +1,16 @@
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+/config
+/scripts
+**/*.svg
+**/*.mp3
+**/*.scss
+**/*.less

@@ -1,0 +1,21 @@
+image: node:8.11
+cache:
+  paths:
+    - node_modules/
+    #- app/bower_components
+deploy_develop:
+  stage: deploy
+  environment: develop
+  only:
+    - develop
+  script:
+    - npm install -g firebase-tools
+    #- npm install -g bower
+    - npm install
+    - cd functions
+    - npm install
+    - cd ..
+    - npm run build
+    #- bower install --allow-root
+    - firebase use --token $FIREBASE_TOKEN default
+    - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_TOKEN
