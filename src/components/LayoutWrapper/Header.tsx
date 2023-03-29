@@ -1,12 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import styled from 'styled-components';
-import { useLocation } from 'react-router-dom';
 
 import { goSmothTag } from 'method';
 // import Drawer from 'react-motion-drawer';
-import LunaLeca from '../../assets/lunaleca.png';
+import icon from '../../assets/icon.png';
 import * as color from '../../constants/colors';
-import { distinguishLan } from '../../constants/navebar';
 
 const StyledHeader = styled.header`
   position: fixed;
@@ -51,17 +49,16 @@ const StyledIconWrap = styled.div`
 `;
 
 const StyledIcon = styled.img`
-  width: 60px;
-  height: 60px;
-  padding: 8px;
+  width: 80px;
+  height: 80px;
+  padding-left: 5px;
 `;
 
 const StyledIconName = styled.div`
   line-height: 1em;
   font-size: 23px;
   color: ${color.DEFAULT_BACKGROUND};
-  font-weight: bold;
-  font-family: DFKai-sb;
+  font-weight: 200;
 `;
 
 const StyledIconSubName = styled.div`
@@ -166,7 +163,6 @@ const StyledMenuButton = styled.button`
 
 function Header(props: { isMobile: boolean }): JSX.Element {
   const { isMobile } = props;
-  const location = useLocation();
   const [isShow, setShow] = useState(false);
   const goHome = (): void => {
     goSmothTag('home');
@@ -181,31 +177,31 @@ function Header(props: { isMobile: boolean }): JSX.Element {
     () => [
       {
         id: 0,
-        title: distinguishLan(['首頁', '首页', 'HOME'], location),
+        title: 'HOME',
         name: 'HOME',
       },
       {
         id: 1,
-        title: distinguishLan(['服務', '服务', 'SERVICES'], location),
+        title: 'SERVICES',
         name: 'SERVICES',
       },
       {
         id: 2,
-        title: distinguishLan(['關於我們', '关于我们', 'ABOUT'], location),
+        title: 'ABOUT',
         name: 'ABOUT',
       },
       {
         id: 3,
-        title: distinguishLan(['合作案例', '合作案例', 'PROJECTS'], location),
+        title: 'PROJECTS',
         name: 'PROJECTS',
       },
       {
         id: 4,
-        title: distinguishLan(['聯絡我們', '联络我们', 'CONTACT'], location),
+        title: 'CONTACT',
         name: 'CONTACT',
       },
     ],
-    [location],
+    [],
   );
 
   const handle = () => {
@@ -216,15 +212,12 @@ function Header(props: { isMobile: boolean }): JSX.Element {
     <StyledHeader>
       <StyledLeft>
         <StyledIconWrap onClick={goHome}>
-          <StyledIcon src={LunaLeca} alt="icon" />
+          <StyledIcon src={icon} alt="icon" />
           <div>
-            <StyledIconName>
-              大月岩
-              {!isMobile && '國際有限公司'}
-            </StyledIconName>
+            <StyledIconName>GenOptiMizE</StyledIconName>
             <StyledIconSubName>
-              LunaLeca
-              {!isMobile && 'International Ltd.'}
+              Your Genes
+              {!isMobile && ', Your Perfect Fit'}
             </StyledIconSubName>
           </div>
         </StyledIconWrap>
