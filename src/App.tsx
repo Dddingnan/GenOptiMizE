@@ -36,7 +36,9 @@ function Content(): JSX.Element {
   return (
     <StyledWrap>
       <Header isMobile={isMobile} />
-      <Main isMobile={isMobile} />
+      <Switch>
+        <Route path="/" component={() => <Main isMobile={isMobile} />} />
+      </Switch>
     </StyledWrap>
   );
 }
@@ -49,7 +51,6 @@ function App(): JSX.Element {
       <Switch>
         <Route path="/" component={Content} />
       </Switch>
-
       <ToastContainer
         position="top-right"
         autoClose={5000}

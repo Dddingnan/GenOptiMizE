@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { sanitizeHtml } from 'method';
 import * as color from 'constants/colors';
-import Construction from 'assets/construction.jpg';
+import Construction from 'assets/construction.jpeg';
 
 const StyledUpper = styled.div`
   width: 100%;

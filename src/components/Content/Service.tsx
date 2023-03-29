@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import { sanitizeHtml } from 'method';
 import * as color from 'constants/colors';
 
+import image1 from 'assets/gene.jpeg';
+import image2 from 'assets/medicine.jpeg';
+
 const StyledWrap = styled.div`
   width: 80%;
   background-color: ${color.WHITE_COLOR};
@@ -80,7 +83,7 @@ const StyledInnerTitle = styled.div`
   margin: 10px;
   line-height: 1.1em;
   font-size: 22px;
-  color: ${color.FONT_BLUE_COLOR};
+  color: ${color.DEFAULT_BACKGROUND};
   font-weight: bold;
 `;
 
@@ -88,25 +91,31 @@ const StyledInnerContent = styled.div`
   margin: 10px;
   line-height: 1.6em;
   font-size: 15px;
-  color: ${color.FONT_GREY_COLOR};
+  color: ${color.FOOTER_FONT_COLOR};
   font-weight: 300;
+`;
+
+const StyledButton = styled.button`
+  border-radius: 5px;
+  width: 100px;
+  height: 45px;
+  background-color: ${color.DEFAULT_BACKGROUND};
+  color: ${color.DEFAULT_YELLOW};
+  margin: 15px 0px 0px 10px;
+  font-size: 15px;
+  cursor: pointer;
 `;
 
 const data = [
   {
-    title: 'Preconstruction<br>Planning',
-    content: `I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.`,
-    url: 'https://static.wixstatic.com/media/c19c76_22d8ec47d1484b09a9c333e4141a12a0.jpg/v1/fill/w_600,h_454,al_c,q_80,usm_0.66_1.00_0.01/c19c76_22d8ec47d1484b09a9c333e4141a12a0.webp',
+    title: 'Provider',
+    content: `Explore our genetic test catalog. <br> Genetic tests can inform personalized medication plans and detect drug interactions for safer use.`,
+    url: image1,
   },
   {
-    title: 'Architectural<br>Modelling',
-    content: `I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.`,
-    url: 'https://static.wixstatic.com/media/b31d0e84cb714761b2b1f06c305023c7.jpg/v1/fill/w_600,h_454,al_c,q_80,usm_0.66_1.00_0.01/b31d0e84cb714761b2b1f06c305023c7.webp',
-  },
-  {
-    title: 'Construction<br>Management',
-    content: `I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.`,
-    url: 'https://static.wixstatic.com/media/9e456adff0ee4a2c847cfd67a62454a3.jpg/v1/fill/w_600,h_454,al_c,q_80,usm_0.66_1.00_0.01/9e456adff0ee4a2c847cfd67a62454a3.webp',
+    title: 'Patient',
+    content: `Start your journey to better health. <br> Consult with a licensed pharmacist to ensure that you are taking medications safely and effectively.`,
+    url: image2,
   },
 ];
 
@@ -121,10 +130,10 @@ function Service(): JSX.Element {
         {data.map((val) => (
           <StyledContent>
             <StyledUpper src={val.url} />
-
             <StyledDowner>
               <StyledInnerTitle dangerouslySetInnerHTML={{ __html: sanitizeHtml(val.title) }} />
-              <StyledInnerContent>{val.content}</StyledInnerContent>
+              <StyledInnerContent dangerouslySetInnerHTML={{ __html: sanitizeHtml(val.content) }} />
+              <StyledButton>Get Started</StyledButton>
             </StyledDowner>
           </StyledContent>
         ))}

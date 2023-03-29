@@ -7,8 +7,7 @@ import Footer from './Footer';
 import Home from '../Content/Home';
 import Service from '../Content/Service';
 import About from '../Content/About';
-import Projects from '../Content/Projects';
-import Contact from '../Content/Contact';
+// import Projects from '../Content/Projects';
 
 import * as color from '../../constants/colors';
 
@@ -37,8 +36,7 @@ function Main(props: { isMobile: boolean }): JSX.Element {
       <StyledContent>
         <Service />
         <About isMobile={isMobile} />
-        <Projects />
-        <Contact />
+        {/* <Projects /> */}
         <Footer />
       </StyledContent>
     </StyledWrap>

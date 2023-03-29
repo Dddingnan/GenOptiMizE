@@ -56,14 +56,10 @@ function Home(props: { isMobile: boolean }): JSX.Element {
   const hadleLanguage = () => {
     const value = getLanguage(location);
     switch (value) {
-      case 0:
-        return `優質，<br>建築材料，<br>領導者。`;
-      case 1:
-        return `优质，<br>建筑材料，<br>领导者。`;
       case 2:
-        return `LEADERS IN HIGH-QUALITY<br>CONSTRUCTION<br>MATERIALS`;
+        return `EXPAND<br>PHARMACOGENOMIC<br>TESTING<br>ACCESSIBILITY`;
       default:
-        return `優質<br>建築材料<br>領導者`;
+        return `EXPAND<br>PHARMACOGENOMIC<br>TESTING<br>ACCESSIBILITY`;
     }
   };
 

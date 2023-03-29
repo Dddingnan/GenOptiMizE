@@ -18,6 +18,7 @@ const StyledHeader = styled.header`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid ${color.FONT_GREY_COLOR};
 `;
 
 const StyledLeft = styled.div`
@@ -64,7 +65,7 @@ const StyledIconName = styled.div`
 const StyledIconSubName = styled.div`
   margin-top: 10px;
   line-height: 1em;
-  font-size: 20px;
+  font-size: 14px;
   color: ${color.DEFAULT_BACKGROUND};
   font-weight: 350;
   font-family: avenir-lt-w01_35-light1475496, sans-serif;
@@ -190,16 +191,11 @@ function Header(props: { isMobile: boolean }): JSX.Element {
         title: 'ABOUT',
         name: 'ABOUT',
       },
-      {
-        id: 3,
-        title: 'PROJECTS',
-        name: 'PROJECTS',
-      },
-      {
-        id: 4,
-        title: 'CONTACT',
-        name: 'CONTACT',
-      },
+      // {
+      //   id: 3,
+      //   title: 'PROJECTS',
+      //   name: 'PROJECTS',
+      // },
     ],
     [],
   );

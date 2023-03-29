@@ -56,41 +56,41 @@ const StyledHr = styled.div`
   border: 1px solid ${color.DEFAULT_YELLOW};
 `;
 
-const StyledClient = styled.div`
-  width: 100%;
-  height: 367px;
-  background-color: ${color.LIGHT_GREY_COLOR};
-`;
+// const StyledClient = styled.div`
+//   width: 100%;
+//   height: 367px;
+//   background-color: ${color.LIGHT_GREY_COLOR};
+// `;
 
-const StyledClientWrap = styled.div`
-  max-width: 1024px;
-  margin: 20px;
-  height: 150px;
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: row;
-  @media (max-width: 1023px) {
-    max-width: 768px;
-  }
-  @media (max-width: 768px) {
-    max-width: 600px;
-  }
-  @media (max-width: 650px) {
-    max-width: 500px;
-  }
-  @media (max-width: 550px) {
-    max-width: 400px;
-  }
-  @media (max-width: 400px) {
-    max-width: 300px;
-  }
-`;
+// const StyledClientWrap = styled.div`
+//   max-width: 1024px;
+//   margin: 20px;
+//   height: 150px;
+//   overflow-y: scroll;
+//   display: flex;
+//   flex-direction: row;
+//   @media (max-width: 1023px) {
+//     max-width: 768px;
+//   }
+//   @media (max-width: 768px) {
+//     max-width: 600px;
+//   }
+//   @media (max-width: 650px) {
+//     max-width: 500px;
+//   }
+//   @media (max-width: 550px) {
+//     max-width: 400px;
+//   }
+//   @media (max-width: 400px) {
+//     max-width: 300px;
+//   }
+// `;
 
-const StyledClientImg = styled.img`
-  width: 150px;
-  height: 150px;
-  margin: 0px 10px;
-`;
+// const StyledClientImg = styled.img`
+//   width: 150px;
+//   height: 150px;
+//   margin: 0px 10px;
+// `;
 
 const StyledProject = styled.div`
   display: flex;
@@ -180,52 +180,52 @@ const projectData = [
   },
 ];
 
-const data = [
-  {
-    name: '1',
-    url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmlpttS5sXB8ub4Si1n4HbuJywFnpFcaby5Q&usqp=CAU',
-  },
-  {
-    name: '2',
-    url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSczPLsNRsjHnRNh-PFIsQJ7ozPqG41VU2gpA&usqp=CAU',
-  },
-  {
-    name: '3',
-    url: 'https://static.wixstatic.com/media/e33d38_19de30ade9b741569540ce4a70172d23~mv2.jpg/v1/fill/w_506,h_506,al_c,q_80,usm_0.66_1.00_0.01/e33d38_19de30ade9b741569540ce4a70172d23~mv2.webp',
-  },
-  {
-    name: '4',
-    url: 'https://cdn.worldvectorlogo.com/logos/eva-air.svg',
-  },
-  {
-    name: '5',
-    url: 'https://cdn.worldvectorlogo.com/logos/mercedes-benz-6.svg',
-  },
-  {
-    name: '5',
-    url: 'https://cdn.worldvectorlogo.com/logos/mercedes-benz-6.svg',
-  },
-  {
-    name: '5',
-    url: 'https://cdn.worldvectorlogo.com/logos/mercedes-benz-6.svg',
-  },
-  {
-    name: '5',
-    url: 'https://cdn.worldvectorlogo.com/logos/mercedes-benz-6.svg',
-  },
-  {
-    name: '5',
-    url: 'https://cdn.worldvectorlogo.com/logos/mercedes-benz-6.svg',
-  },
-  {
-    name: '5',
-    url: 'https://cdn.worldvectorlogo.com/logos/mercedes-benz-6.svg',
-  },
-  {
-    name: '5',
-    url: 'https://cdn.worldvectorlogo.com/logos/mercedes-benz-6.svg',
-  },
-];
+// const data = [
+//   {
+//     name: '1',
+//     url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmlpttS5sXB8ub4Si1n4HbuJywFnpFcaby5Q&usqp=CAU',
+//   },
+//   {
+//     name: '2',
+//     url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSczPLsNRsjHnRNh-PFIsQJ7ozPqG41VU2gpA&usqp=CAU',
+//   },
+//   {
+//     name: '3',
+//     url: 'https://static.wixstatic.com/media/e33d38_19de30ade9b741569540ce4a70172d23~mv2.jpg/v1/fill/w_506,h_506,al_c,q_80,usm_0.66_1.00_0.01/e33d38_19de30ade9b741569540ce4a70172d23~mv2.webp',
+//   },
+//   {
+//     name: '4',
+//     url: 'https://cdn.worldvectorlogo.com/logos/eva-air.svg',
+//   },
+//   {
+//     name: '5',
+//     url: 'https://cdn.worldvectorlogo.com/logos/mercedes-benz-6.svg',
+//   },
+//   {
+//     name: '5',
+//     url: 'https://cdn.worldvectorlogo.com/logos/mercedes-benz-6.svg',
+//   },
+//   {
+//     name: '5',
+//     url: 'https://cdn.worldvectorlogo.com/logos/mercedes-benz-6.svg',
+//   },
+//   {
+//     name: '5',
+//     url: 'https://cdn.worldvectorlogo.com/logos/mercedes-benz-6.svg',
+//   },
+//   {
+//     name: '5',
+//     url: 'https://cdn.worldvectorlogo.com/logos/mercedes-benz-6.svg',
+//   },
+//   {
+//     name: '5',
+//     url: 'https://cdn.worldvectorlogo.com/logos/mercedes-benz-6.svg',
+//   },
+//   {
+//     name: '5',
+//     url: 'https://cdn.worldvectorlogo.com/logos/mercedes-benz-6.svg',
+//   },
+// ];
 
 function Projects(): JSX.Element {
   // const [page, setPage] = useState(0);
@@ -313,7 +313,7 @@ function Projects(): JSX.Element {
           ))}
         </StyledProject>
       </StyledWrap>
-      <StyledClient>
+      {/* <StyledClient>
         <StyledTitleWrap>
           <StyledTitle>CLIENTS</StyledTitle>
           <StyledHr />
@@ -323,7 +323,7 @@ function Projects(): JSX.Element {
             ))}
           </StyledClientWrap>
         </StyledTitleWrap>
-      </StyledClient>
+      </StyledClient> */}
     </>
   );
 }
