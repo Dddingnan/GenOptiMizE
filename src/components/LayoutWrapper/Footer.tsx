@@ -5,6 +5,7 @@ import * as color from 'constants/colors';
 
 const StyledWrapCopy = styled.div`
   width: 100%;
+  height: 60px;
   background-color: ${color.DARK_BLUE_COLOR};
   @media (max-width: 450px) {
     padding-bottom: 95px;

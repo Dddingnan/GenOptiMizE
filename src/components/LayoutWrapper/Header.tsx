@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import styled from 'styled-components';
 
+import { useHistory, useLocation } from 'react-router-dom';
 import { goSmothTag } from 'method';
 // import Drawer from 'react-motion-drawer';
 import icon from '../../assets/icon.png';
@@ -163,14 +164,26 @@ const StyledMenuButton = styled.button`
 // `;
 
 function Header(props: { isMobile: boolean }): JSX.Element {
+  const history = useHistory();
+  const location = useLocation();
   const { isMobile } = props;
   const [isShow, setShow] = useState(false);
   const goHome = (): void => {
-    goSmothTag('home');
+    if (location.pathname !== '/') {
+      history.push('/');
+      setTimeout(() => goSmothTag('home'), 200);
+    } else {
+      goSmothTag('home');
+    }
   };
 
   const go = (name): void => {
-    goSmothTag(name.toLowerCase());
+    if (location.pathname !== '/') {
+      history.push('/');
+      setTimeout(() => goSmothTag(name.toLowerCase()), 200);
+    } else {
+      goSmothTag(name.toLowerCase());
+    }
     if (isMobile) setShow(false);
   };
 

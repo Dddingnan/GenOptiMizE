@@ -1,17 +1,14 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
-
 
 .pin {
   width: 30px;
@@ -53,7 +50,7 @@ code {
   border-radius: 50%;
 }
 .pulse {
-  background: rgba(0,0,0,0.2);
+  background: rgba(0, 0, 0, 0.2);
   border-radius: 50%;
   height: 14px;
   width: 14px;
@@ -69,7 +66,7 @@ code {
   z-index: -2;
 }
 .pulse:after {
-  content: "";
+  content: '';
   border-radius: 50%;
   height: 40px;
   width: 40px;
@@ -86,7 +83,7 @@ code {
   -ms-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
   opacity: 0;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
   filter: alpha(opacity=0);
   -webkit-box-shadow: 0 0 1px 2px #b15555;
   box-shadow: 0 0 1px 2px #b15555;
@@ -104,7 +101,7 @@ code {
     -ms-transform: scale(0.1, 0.1);
     transform: scale(0.1, 0.1);
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
     filter: alpha(opacity=0);
   }
   50% {
@@ -119,7 +116,7 @@ code {
     -ms-transform: scale(1.2, 1.2);
     transform: scale(1.2, 1.2);
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
     filter: alpha(opacity=0);
   }
 }
@@ -131,7 +128,7 @@ code {
     -ms-transform: scale(0.1, 0.1);
     transform: scale(0.1, 0.1);
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
     filter: alpha(opacity=0);
   }
   50% {
@@ -146,7 +143,7 @@ code {
     -ms-transform: scale(1.2, 1.2);
     transform: scale(1.2, 1.2);
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
     filter: alpha(opacity=0);
   }
 }
@@ -158,7 +155,7 @@ code {
     -ms-transform: scale(0.1, 0.1);
     transform: scale(0.1, 0.1);
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
     filter: alpha(opacity=0);
   }
   50% {
@@ -173,7 +170,7 @@ code {
     -ms-transform: scale(1.2, 1.2);
     transform: scale(1.2, 1.2);
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
     filter: alpha(opacity=0);
   }
 }
@@ -185,7 +182,7 @@ code {
     -ms-transform: scale(0.1, 0.1);
     transform: scale(0.1, 0.1);
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
     filter: alpha(opacity=0);
   }
   50% {
@@ -200,14 +197,14 @@ code {
     -ms-transform: scale(1.2, 1.2);
     transform: scale(1.2, 1.2);
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
     filter: alpha(opacity=0);
   }
 }
 @-moz-keyframes bounce {
   0% {
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
     filter: alpha(opacity=0);
     -webkit-transform: translateY(-2000px) rotate(-45deg);
     -moz-transform: translateY(-2000px) rotate(-45deg);
@@ -243,7 +240,7 @@ code {
 @-webkit-keyframes bounce {
   0% {
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
     filter: alpha(opacity=0);
     -webkit-transform: translateY(-2000px) rotate(-45deg);
     -moz-transform: translateY(-2000px) rotate(-45deg);
@@ -279,7 +276,7 @@ code {
 @-o-keyframes bounce {
   0% {
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
     filter: alpha(opacity=0);
     -webkit-transform: translateY(-2000px) rotate(-45deg);
     -moz-transform: translateY(-2000px) rotate(-45deg);
@@ -315,7 +312,7 @@ code {
 @keyframes bounce {
   0% {
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=0)';
     filter: alpha(opacity=0);
     -webkit-transform: translateY(-2000px) rotate(-45deg);
     -moz-transform: translateY(-2000px) rotate(-45deg);

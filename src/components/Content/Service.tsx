@@ -124,7 +124,6 @@ const data = [
 
 function Service(): JSX.Element {
   const history = useHistory();
-
   return (
     <StyledWrap id="services">
       <StyledTitleWrap>
