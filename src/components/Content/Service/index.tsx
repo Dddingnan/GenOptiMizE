@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import GoogleButton from 'react-google-button';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
 
 // components
 import { useLocation } from 'react-router-dom';
@@ -27,6 +29,34 @@ const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const StyledContentWrap = styled.div`
+  min-height: 500px;
+  width: 50%;
+`;
+
+const StyledGoogleWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 140px);
+`;
+
+const StyledName = styled(Typography)`
+  font-size: 25px !important;
+  color: ${color.DEFAULT_BACKGROUND};
+`;
+
+const StyledBorder = styled(Divider)`
+  margin: 8px 0px 50px 0px !important;
+  width: 100px;
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(to right, #27ffee, #1da69c) border-box;
+  border-radius: 50em;
+  border: 1px solid transparent !important;
 `;
 
 function onAuthStateChange(callback) {
@@ -59,7 +89,17 @@ function Index(): JSX.Element {
   return (
     <StyledWrap>
       <StyledContent>
-        {loggedIn ? <User user={user} /> : <GoogleButton onClick={() => signInWithGoogle()} />}
+        <StyledContentWrap>
+          {loggedIn ? (
+            <User user={user} />
+          ) : (
+            <StyledGoogleWrap>
+              <StyledName variant="h4">Log in</StyledName>
+              <StyledBorder />
+              <GoogleButton onClick={() => signInWithGoogle()} />
+            </StyledGoogleWrap>
+          )}
+        </StyledContentWrap>
         <Footer />
       </StyledContent>
     </StyledWrap>
