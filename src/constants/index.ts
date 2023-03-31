@@ -11,3 +11,25 @@ export const Location = {
 export const EMAIL_SERVICE_ID = 'service_32hdmo8';
 export const EMAIL_TEMPLATE_ID = 'template_3ktnn4h';
 export const EMAIL_USER_ID = 'user_MsuM3ECGgrTkYZzJVS8QW';
+
+export type UserType = {
+  uid: string;
+  userName: string;
+  photoUrl: string;
+  loggedIn: boolean;
+};
+
+export type DataType = {
+  [key: string]: {
+    uid: string;
+    enzyme: Array<{
+      enzyme: string;
+      diploType: string;
+      phenoType: string;
+    }>;
+    medicine: Array<{
+      name: string;
+      dose: string;
+    }>;
+  };
+};

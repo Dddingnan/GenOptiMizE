@@ -1,16 +1,22 @@
 // packages
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import * as color from 'constants/colors';
+import { useLocation } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 import LogoutIcon from '@mui/icons-material/Logout';
 
-import Record from './Record';
+// Data
+import data from 'data/index';
+import { filterItems } from 'method/index';
+import Enzyme from './Enzyme';
+import Medicine from './Medicine';
 
 import { logout } from '../../../api/firebase/init';
+import { UserType } from '../../../constants/index';
 
 const StyledWrap = styled.div`
   width: 100%;
@@ -23,6 +29,7 @@ const StyledOutter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 20px 0px;
 `;
 
 const StyledIconWrap = styled.div`
@@ -65,7 +72,6 @@ const StyledSearchWrap = styled.div`
   height: 50px;
   display: flex;
   flex-direction: row;
-  margin-top: 20px;
   justify-content: center;
   align-items: center;
 `;
@@ -99,9 +105,47 @@ const StyledBorder = styled(Divider)`
   margin: 20px !important;
 `;
 
-function User(props): JSX.Element {
+function User(props: { user: UserType }): JSX.Element {
   const { user } = props;
-  const { userName, photoUrl } = user;
+  const { uid, userName, photoUrl } = user;
+  const location = useLocation();
+  const [input, SetInput] = useState('');
+  const query = new URLSearchParams(location.search);
+  const type = query.get('type');
+  const isProvider = type === 'provider';
+
+  const handleInputChange = (e) => {
+    SetInput(e.target.value);
+  };
+
+  const enzymeRecords = React.useMemo(() => {
+    if (isProvider) {
+      const record = filterItems(input);
+      if (Object.keys(record).length) {
+        return record.enzyme;
+      }
+      return [];
+    }
+    if (!isProvider && data.data[userName] && data.data[userName].uid === uid) {
+      return data.data[userName].enzyme;
+    }
+    return [];
+  }, [isProvider, userName, uid, input]);
+
+  const medicineRecords = React.useMemo(() => {
+    if (isProvider) {
+      const record = filterItems(input);
+      if (Object.keys(record).length) {
+        return record.medicine;
+      }
+      return [];
+    }
+    if (!isProvider && data.data[userName] && data.data[userName].uid === uid) {
+      return data.data[userName].medicine;
+    }
+    return [];
+  }, [isProvider, userName, uid, input]);
+
   return (
     <StyledWrap>
       <StyledIconWrap>
@@ -118,7 +162,7 @@ function User(props): JSX.Element {
           <Button
             variant="contained"
             endIcon={<LogoutIcon />}
-            style={{ backgroundColor: '#E14949' }}
+            style={{ backgroundColor: '#E14949', fontSize: 13 }}
             onClick={() => logout()}
           >
             Log Out
@@ -127,24 +171,27 @@ function User(props): JSX.Element {
       </StyledIconWrap>
       <StyledBorder />
 
+      {isProvider && (
+        <StyledOutter>
+          <StyledSearchWrap>
+            <StyledInput
+              placeholder="Name..."
+              type="text"
+              value={input}
+              onChange={handleInputChange}
+            />
+            <StyledButton>Search</StyledButton>
+          </StyledSearchWrap>
+        </StyledOutter>
+      )}
+
       <StyledRecordName variant="h4">Enzyme Record</StyledRecordName>
-      <Record user={user} />
+      <Enzyme data={enzymeRecords} />
 
       <StyledBorder />
 
       <StyledRecordName variant="h4">Medicine Record</StyledRecordName>
-      <Record user={user} />
-
-      <StyledOutter>
-        <StyledSearchWrap>
-          <StyledInput
-            placeholder="Name..."
-            type="text"
-            // value={this.state.value} onChange={this.handleChange}
-          />
-          <StyledButton>Search</StyledButton>
-        </StyledSearchWrap>
-      </StyledOutter>
+      <Medicine data={medicineRecords} />
     </StyledWrap>
   );
 }

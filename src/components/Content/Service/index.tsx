@@ -6,13 +6,13 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 
 // components
-import { useLocation } from 'react-router-dom';
 import Footer from '../../LayoutWrapper/Footer';
 import User from './User';
 
 // methods
 import { auth, signInWithGoogle } from '../../../api/firebase/init';
 import * as color from '../../../constants/colors';
+import { UserType } from '../../../constants/index';
 
 const StyledWrap = styled.div`
   width: 100vw;
@@ -75,10 +75,13 @@ function onAuthStateChange(callback) {
 }
 
 function Index(): JSX.Element {
-  const location = useLocation();
-  const [user, setUser] = useState({ uid: '', userName: '', photoUrl: '', loggedIn: false });
+  const [user, setUser] = useState<UserType>({
+    uid: '',
+    userName: '',
+    photoUrl: '',
+    loggedIn: false,
+  });
   const { loggedIn } = user;
-  console.log('Index', user, location);
   useEffect(() => {
     const unsubscribe = onAuthStateChange(setUser);
     return () => {

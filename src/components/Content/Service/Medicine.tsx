@@ -17,10 +17,34 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
 import TableHead from '@mui/material/TableHead';
+import makeStyles from '@material-ui/core/styles/makeStyles';
 
 const StyledWrap = styled(TableContainer)`
   margin: 10px !important;
 `;
+
+const StyledTableWrap = styled(Table)`
+  min-width: 500px;
+`;
+
+const StyledTableCell = styled(TableCell)`
+  font-size: 15px !important;
+`;
+
+const StyledTableSmallCell = styled(TableCell)`
+  font-size: 13px !important;
+`;
+
+const useStyles = makeStyles({
+  toolbar: {
+    '& > p:nth-of-type(2)': {
+      fontSize: 13,
+    },
+    '& > .MuiTablePagination-selectLabel': {
+      fontSize: 12,
+    },
+  },
+});
 
 interface TablePaginationActionsProps {
   count: number;
@@ -79,33 +103,16 @@ function TablePaginationActions(props: TablePaginationActionsProps) {
   );
 }
 
-function createData(name: string, calories: number, fat: number) {
-  return { name, calories, fat };
-}
-
-const rows = [
-  createData('Cupcake', 305, 3.7),
-  createData('Donut', 452, 25.0),
-  createData('Eclair', 262, 16.0),
-  createData('Frozen yoghurt', 159, 6.0),
-  createData('Gingerbread', 356, 16.0),
-  createData('Honeycomb', 408, 3.2),
-  createData('Ice cream sandwich', 237, 9.0),
-  createData('Jelly Bean', 375, 0.0),
-  createData('KitKat', 518, 26.0),
-  createData('Lollipop', 392, 0.2),
-  createData('Marshmallow', 318, 0),
-  createData('Nougat', 360, 19.0),
-  createData('Oreo', 437, 18.0),
-].sort((a, b) => (a.calories < b.calories ? -1 : 1));
-
-function User(props): JSX.Element {
-  const { user } = props;
+function Medicine(props: {
+  data: Array<{
+    name: string;
+    dose: string;
+  }>;
+}): JSX.Element {
+  const { data } = props;
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
-  // Avoid a layout jump when reaching the last page with empty rows.
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+  const classes = useStyles();
 
   const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
     setPage(newPage);
@@ -118,38 +125,31 @@ function User(props): JSX.Element {
     setPage(0);
   };
 
-  console.log('rrr', user);
+  // Avoid a layout jump when reaching the last page with empty rows.
+  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - data.length) : 0;
 
   return (
     <StyledWrap component={Paper}>
-      <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
+      <StyledTableWrap aria-label="custom pagination table" size="medium">
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
+            <StyledTableCell>Name</StyledTableCell>
+            <StyledTableCell align="right">Dose Recommendation</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {(rowsPerPage > 0
-            ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : rows
+            ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            : data
           ).map((row) => (
             <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
-                {row.calories}
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
-                {row.fat}
-              </TableCell>
+              <StyledTableSmallCell>{row.name}</StyledTableSmallCell>
+              <StyledTableSmallCell align="right">{row.dose}</StyledTableSmallCell>
             </TableRow>
           ))}
           {emptyRows > 0 && (
             <TableRow style={{ height: 53 * emptyRows }}>
-              <TableCell colSpan={6} />
+              <StyledTableSmallCell colSpan={6} />
             </TableRow>
           )}
         </TableBody>
@@ -158,7 +158,7 @@ function User(props): JSX.Element {
             <TablePagination
               rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
               colSpan={3}
-              count={rows.length}
+              count={data.length}
               rowsPerPage={rowsPerPage}
               page={page}
               SelectProps={{
@@ -170,12 +170,18 @@ function User(props): JSX.Element {
               onPageChange={handleChangePage}
               onRowsPerPageChange={handleChangeRowsPerPage}
               ActionsComponent={TablePaginationActions}
+              classes={{
+                toolbar: classes.toolbar,
+              }}
+              sx={{
+                fontSize: 13,
+              }}
             />
           </TableRow>
         </TableFooter>
-      </Table>
+      </StyledTableWrap>
     </StyledWrap>
   );
 }
 
-export default User;
+export default Medicine;
