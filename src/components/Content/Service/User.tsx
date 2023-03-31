@@ -20,12 +20,11 @@ import { UserType } from '../../../constants/index';
 
 const StyledWrap = styled.div`
   width: 100%;
-  height: 100%;
+  min-height: calc(100vh - 140px);
 `;
 
 const StyledOutter = styled.div`
   width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,8 +117,20 @@ function User(props: { user: UserType }): JSX.Element {
     SetInput(e.target.value);
   };
 
+  const name = React.useMemo(() => {
+    if (isProvider) {
+      if (!input) return '';
+      const record = filterItems(input);
+      if (Object.keys(record).length) {
+        return record.name;
+      }
+      return '';
+    }
+  }, [isProvider, input]);
+
   const enzymeRecords = React.useMemo(() => {
     if (isProvider) {
+      if (!input) return [];
       const record = filterItems(input);
       if (Object.keys(record).length) {
         return record.enzyme;
@@ -134,6 +145,7 @@ function User(props: { user: UserType }): JSX.Element {
 
   const medicineRecords = React.useMemo(() => {
     if (isProvider) {
+      if (!input) return [];
       const record = filterItems(input);
       if (Object.keys(record).length) {
         return record.medicine;
@@ -169,6 +181,7 @@ function User(props: { user: UserType }): JSX.Element {
           </Button>
         </StyledWrapNameRight>
       </StyledIconWrap>
+
       <StyledBorder />
 
       {isProvider && (
@@ -183,6 +196,13 @@ function User(props: { user: UserType }): JSX.Element {
             <StyledButton>Search</StyledButton>
           </StyledSearchWrap>
         </StyledOutter>
+      )}
+
+      {isProvider && (
+        <>
+          <StyledRecordName variant="h4">Name: {name}</StyledRecordName>
+          <StyledBorder />
+        </>
       )}
 
       <StyledRecordName variant="h4">Enzyme Record</StyledRecordName>

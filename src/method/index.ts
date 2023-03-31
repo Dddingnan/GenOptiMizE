@@ -34,6 +34,7 @@ export const filterItems = (
   input: string,
 ):
   | {
+      name: string;
       uid: string;
       enzyme: Array<{
         enzyme: string;

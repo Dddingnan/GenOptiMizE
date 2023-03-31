@@ -2,6 +2,7 @@ import { DataType } from 'constants/index';
 
 const data: DataType = {
   'Dingnan H': {
+    name: 'Dingnan H',
     uid: 'rMfetesPW8WeC3SlfSvjq17Ei5v2',
     enzyme: [
       {
@@ -27,6 +28,7 @@ const data: DataType = {
     ],
   },
   'Adfdf d': {
+    name: 'Adfdf d',
     uid: 'rMfetesPW8WeC3SlfSvjq17Ei5v2',
     enzyme: [
       {
