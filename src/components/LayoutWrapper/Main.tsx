@@ -7,7 +7,6 @@ import Footer from './Footer';
 import Home from '../Content/Home';
 import Service from '../Content/Service';
 import About from '../Content/About';
-// import Projects from '../Content/Projects';
 
 import * as color from '../../constants/colors';
 

@@ -46,7 +46,7 @@ const StyledIconWrap = styled.div`
   background-color: ${color.DEFAULT_YELLOW};
   cursor: pointer;
   @media (max-width: 1023px) {
-    width: 165px;
+    width: 175px;
   }
 `;
 
@@ -204,11 +204,6 @@ function Header(props: { isMobile: boolean }): JSX.Element {
         title: 'ABOUT',
         name: 'ABOUT',
       },
-      // {
-      //   id: 3,
-      //   title: 'PROJECTS',
-      //   name: 'PROJECTS',
-      // },
     ],
     [],
   );
@@ -223,7 +218,10 @@ function Header(props: { isMobile: boolean }): JSX.Element {
         <StyledIconWrap onClick={goHome}>
           <StyledIcon src={icon} alt="icon" />
           <div>
-            <StyledIconName>GenOptiMizE</StyledIconName>
+            <StyledIconName>
+              GenOpti
+              {!isMobile && 'MizE'}
+            </StyledIconName>
             <StyledIconSubName>
               Your Genes
               {!isMobile && ', Your Perfect Fit'}

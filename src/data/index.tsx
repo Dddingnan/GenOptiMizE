@@ -27,9 +27,9 @@ const data: DataType = {
       },
     ],
   },
-  'Adfdf d': {
-    name: 'Adfdf d',
-    uid: 'rMfetesPW8WeC3SlfSvjq17Ei5v2',
+  'Hsu Dingnan': {
+    name: 'Hsu Dingnan',
+    uid: 'QGPscnvI6GbyvBdnLNXpIkqqOtG3',
     enzyme: [
       {
         enzyme: '2C19',

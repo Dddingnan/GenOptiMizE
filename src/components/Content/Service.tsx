@@ -132,7 +132,7 @@ function Service(): JSX.Element {
       </StyledTitleWrap>
       <StyledContentWrap>
         {data.map((val) => (
-          <StyledContent>
+          <StyledContent key={val.url}>
             <StyledUpper src={val.url} />
             <StyledDowner>
               <StyledInnerTitle dangerouslySetInnerHTML={{ __html: sanitizeHtml(val.title) }} />

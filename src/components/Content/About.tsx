@@ -134,10 +134,10 @@ const StyledTitle = styled.h2`
 
 const StyledHr = styled.div`
   width: 116px;
-  height: 10px;
-  color: ${color.DEFAULT_YELLOW};
-  background-color: ${color.DEFAULT_YELLOW};
-  border: 1px solid ${color.DEFAULT_YELLOW};
+  height: 5px;
+  color: ${color.DEFAULT_BACKGROUND};
+  background-color: ${color.DEFAULT_BACKGROUND};
+  border: 1px solid ${color.DEFAULT_BACKGROUND};
   margin: 10px;
 `;
 
@@ -175,7 +175,8 @@ const StyledDownnerInnerWrap = styled.div`
 
 const StyledDownnerNumber = styled.div`
   font-size: 60px;
-  font-weight: 700;
+  font-weight: 300;
+  color: ${color.DEFAULT_BACKGROUND};
   @media (max-width: 1023px) {
     font-size: 40px;
   }
@@ -183,13 +184,13 @@ const StyledDownnerNumber = styled.div`
 
 const StyledDownnerText = styled.div`
   font-size: 22px;
-  font-weight: 500;
   display: flex;
   justify-content: center;
   align-items: center;
   line-height: 1.5em;
   text-align: center;
-}
+  font-weight: 300;
+  color: ${color.DEFAULT_BACKGROUND};
 `;
 
 const StyledDownnerRight = styled.div`
@@ -223,12 +224,12 @@ const StyledDownnerOuter = styled.div`
   }
 `;
 
-const aa = `I'm a paragraph. Click here to add your own 
-text and edit me. It’s easy. Just click “Edit Text” or 
-double click me to add your own content and make changes 
-to the font. Feel free to drag and drop me anywhere you 
-like on your page. I’m a great place for you to tell a 
-story and let your users know a little more about you.`;
+const paragraph = `
+GenOptiMizE strives to expand pharmacogenomic testing accessibility, optimize individual drug therapies, and streamline healthcare through a personalized and proactive approach to medicine. 
+<br>
+<br>
+To bring pharmacogenomics services into the mainstream healthcare system as a standard of practice and transform our health care system from one that is reactive to proactive.
+`;
 
 const data = [
   {
@@ -244,7 +245,7 @@ const data = [
     name: 'Contractors<br>Appointed',
   },
   {
-    number: 26,
+    number: 6,
     name: 'Awards<br>Won',
   },
 ];
@@ -261,7 +262,9 @@ function About(props: { isMobile: boolean }): JSX.Element {
               <StyledHr />
             </StyledTitleWrap>
 
-            <StyledUpperLeftContentInner>{aa}</StyledUpperLeftContentInner>
+            <StyledUpperLeftContentInner
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(paragraph) }}
+            />
           </StyledUpperLeftContent>
         </StyledUpperLeft>
 
@@ -273,7 +276,7 @@ function About(props: { isMobile: boolean }): JSX.Element {
       <StyledDownner>
         <StyledDownnerOuter>
           {data.map((val, key) => (
-            <StyledDownnerInnerWrap noFlex={key !== 3}>
+            <StyledDownnerInnerWrap key={key} noFlex={key !== 3}>
               <StyledDownnerInner>
                 <StyledDownnerNumber>{val.number}</StyledDownnerNumber>
                 <StyledDownnerText dangerouslySetInnerHTML={{ __html: sanitizeHtml(val.name) }} />
