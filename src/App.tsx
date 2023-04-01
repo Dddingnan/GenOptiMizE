@@ -16,6 +16,8 @@ const StyledWrap = styled.div`
   background-color: white;
   width: 100vw;
   height: 100vh;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
   overflow: hidden;
 `;
 
