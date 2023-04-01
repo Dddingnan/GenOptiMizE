@@ -1,16 +1,22 @@
 // packages
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import GoogleButton from 'react-google-button';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
+import Dialog from '@mui/material/Dialog';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import { filterItems } from 'method/index';
+import { useLocation } from 'react-router-dom';
 
 // components
 import Footer from '../../LayoutWrapper/Footer';
 import User from './User';
+// import data from 'data/index';
 
 // methods
-import { auth, signInWithGoogle } from '../../../api/firebase/init';
+import { auth, signInWithGoogle, logout } from '../../../api/firebase/init';
 import * as color from '../../../constants/colors';
 import { UserType } from '../../../constants/index';
 
@@ -62,22 +68,10 @@ const StyledBorder = styled(Divider)`
   border: 1px solid transparent !important;
 `;
 
-function onAuthStateChange(callback) {
-  return auth.onAuthStateChanged(async (user) => {
-    if (user) {
-      const { uid, displayName, email, photoURL } = user;
-      try {
-        callback({ uid, userName: displayName, photoUrl: photoURL, email, loggedIn: true });
-      } catch (error) {
-        callback({ uid: '', userName: '', loggedIn: false });
-      }
-    } else {
-      callback({ uid: '', userName: '', loggedIn: false });
-    }
-  });
-}
+type Modal = { status: 'success' | 'info' | 'warning' | 'error'; open: boolean; message: string };
 
 function Index(): JSX.Element {
+  const [modal, setModal] = useState<Modal>({ status: 'info', open: false, message: '' });
   const [user, setUser] = useState<UserType>({
     uid: '',
     userName: '',
@@ -85,15 +79,79 @@ function Index(): JSX.Element {
     loggedIn: false,
   });
   const { loggedIn } = user;
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const type = query.get('type');
+  const isProvider = type === 'provider';
+
+  const errorHandle = (callback) => {
+    callback({ uid: '', userName: '', loggedIn: false });
+    setModal({
+      status: 'error',
+      message: "Sorry! You don't have permission to access!",
+      open: true,
+    });
+    logout();
+  };
+
+  const onAuthStateChange = useCallback(
+    (callback) => {
+      return auth.onAuthStateChanged(async (firebaseUser) => {
+        if (firebaseUser) {
+          const { uid, displayName, email, photoURL } = firebaseUser;
+          try {
+            const record = filterItems(displayName as string);
+            if (Object.keys(record).length) {
+              if (isProvider && record.isAdmin) {
+                callback({ uid, userName: displayName, photoUrl: photoURL, email, loggedIn: true });
+                return;
+              }
+              if (!isProvider) {
+                callback({ uid, userName: displayName, photoUrl: photoURL, email, loggedIn: true });
+                return;
+              }
+              if (!record.isAdmin) {
+                errorHandle(callback);
+                return;
+              }
+            } else {
+              errorHandle(callback);
+              return;
+            }
+          } catch (error) {
+            errorHandle(callback);
+          }
+        } else {
+          callback({ uid: '', userName: '', loggedIn: false });
+        }
+      });
+    },
+    [isProvider],
+  );
+
   useEffect(() => {
     const unsubscribe = onAuthStateChange(setUser);
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [onAuthStateChange]);
+
+  const handleClose = () => {
+    setModal({
+      status: 'info',
+      open: false,
+      message: '',
+    });
+  };
 
   return (
     <StyledWrap>
+      <Dialog onClose={handleClose} open={modal.open}>
+        <Alert severity={modal.status}>
+          <AlertTitle>{modal.status}</AlertTitle>
+          {modal.status === 'success' ? <>{modal.status}</> : <>{modal.message}</>}
+        </Alert>
+      </Dialog>
       <StyledContent>
         <StyledContentWrap>
           {loggedIn ? (

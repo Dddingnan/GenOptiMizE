@@ -34,6 +34,7 @@ export const filterItems = (
   input: string,
 ):
   | {
+      isAdmin: boolean;
       name: string;
       uid: string;
       enzyme: Array<{

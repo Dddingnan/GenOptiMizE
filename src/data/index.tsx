@@ -2,6 +2,7 @@ import { DataType } from 'constants/index';
 
 const data: DataType = {
   'Dingnan H': {
+    isAdmin: true,
     name: 'Dingnan H',
     uid: 'rMfetesPW8WeC3SlfSvjq17Ei5v2',
     enzyme: [
@@ -28,6 +29,7 @@ const data: DataType = {
     ],
   },
   'Hsu Dingnan': {
+    isAdmin: false,
     name: 'Hsu Dingnan',
     uid: 'QGPscnvI6GbyvBdnLNXpIkqqOtG3',
     enzyme: [
@@ -54,6 +56,7 @@ const data: DataType = {
     ],
   },
   Sunny: {
+    isAdmin: true,
     name: 'Sunny',
     uid: '1XQ5P2ah8TYdzRhqvZjb94Biec32',
     enzyme: [

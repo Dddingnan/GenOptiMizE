@@ -21,6 +21,7 @@ export type UserType = {
 
 export type DataType = {
   [key: string]: {
+    isAdmin: boolean;
     name: string;
     uid: string;
     enzyme: Array<{
