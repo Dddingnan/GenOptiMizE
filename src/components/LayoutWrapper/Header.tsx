@@ -1,9 +1,18 @@
 import React, { useMemo, useState } from 'react';
 import styled from 'styled-components';
-
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import HomeIcon from '@mui/icons-material/Home';
+import MedicationIcon from '@mui/icons-material/Medication';
+import ApartmentIcon from '@mui/icons-material/Apartment';
 import { useHistory, useLocation } from 'react-router-dom';
 import { goSmothTag } from 'method';
-// import Drawer from 'react-motion-drawer';
 import icon from '../../assets/icon.png';
 import * as color from '../../constants/colors';
 
@@ -96,73 +105,6 @@ const StyledMenuButton = styled.button`
   cursor: pointer;
 `;
 
-// const StyledMenu = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   align-items: flex-start;
-//   flex-direction: column;
-//   padding: 20px;
-//   width: 100%;
-//   height: 100%;
-// `;
-
-// const StyledSubMenu = styled.div`
-//   margin: 10px;
-//   color: ${color.FONT_BLUE_COLOR};
-//   cursor: pointer;
-//   font-size: 20px;
-//   font-weight: 600;
-//   font-family: avenir-lt-w01_35-light1475496, sans-serif;
-// `;
-
-// const StyledHr = styled.div`
-//   width: 36px;
-//   height: 3px;
-//   color: ${color.DEFAULT_YELLOW};
-//   background-color: ${color.DEFAULT_YELLOW};
-//   border: 1px solid ${color.DEFAULT_YELLOW};
-//   margin: 0px 10px;
-// `;
-
-// const StyledWrapMenu = styled.div`
-//   margin: 10px 0px;
-// `;
-
-// const StyledWrapOuter = styled.div`
-//   display: flex;
-//   flex: 1;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: flex-start;
-//   width: 100%;
-//   height: 100%;
-// `;
-
-// const StyledWrapOuter2 = styled.div`
-//   display: flex;
-//   flex: 1;
-//   justify-content: flex-start;
-//   align-items: flex-end;
-//   width: 100%;
-//   height: 100%;
-// `;
-
-// const StyledIconButton = styled.button`
-//   width: 50px;
-//   height: 50px;
-//   cursor: pointer;
-//   margin: 40px 10px 10px 10px;
-// `;
-
-// const StyledI = styled.i`
-//   color: ${color.FONT_BLUE_COLOR};
-//   font-size: 25px;
-//   transition: all 0.3s;
-//   &:hover {
-//     transform: rotate(0.5turn);
-//   }
-// `;
-
 function Header(props: { isMobile: boolean }): JSX.Element {
   const history = useHistory();
   const location = useLocation();
@@ -184,7 +126,11 @@ function Header(props: { isMobile: boolean }): JSX.Element {
     } else {
       goSmothTag(name.toLowerCase());
     }
-    if (isMobile) setShow(false);
+    if (isMobile) {
+      setShow(false);
+      goSmothTag(name.toLowerCase());
+      setTimeout(() => goSmothTag(name.toLowerCase()), 200);
+    }
   };
 
   const navbar = useMemo(
@@ -193,16 +139,19 @@ function Header(props: { isMobile: boolean }): JSX.Element {
         id: 0,
         title: 'HOME',
         name: 'HOME',
+        icon: <HomeIcon />,
       },
       {
         id: 1,
         title: 'SERVICES',
         name: 'SERVICES',
+        icon: <MedicationIcon />,
       },
       {
         id: 2,
         title: 'ABOUT',
         name: 'ABOUT',
+        icon: <ApartmentIcon />,
       },
     ],
     [],
@@ -211,6 +160,22 @@ function Header(props: { isMobile: boolean }): JSX.Element {
   const handle = () => {
     setShow(!isShow);
   };
+
+  const list = () => (
+    <Box sx={{ width: 220 }} role="presentation">
+      <List>
+        {navbar.map((val) => (
+          <ListItem key={val.title} disablePadding onClick={() => go(val.name)}>
+            <ListItemButton>
+              <ListItemIcon>{val.icon}</ListItemIcon>
+              <ListItemText primary={val.title} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+    </Box>
+  );
 
   return (
     <StyledHeader>
@@ -235,36 +200,9 @@ function Header(props: { isMobile: boolean }): JSX.Element {
             <StyledMenuButton type="button" onClick={handle}>
               <i className="fa fa-bars" />
             </StyledMenuButton>
-            {/* <Drawer
-              fadeOut
-              right
-              open={isShow}
-              onChange={handle}
-              width={165}
-              overlayColor="#000000b5"
-              drawerStyle={{
-                background: 'rgb(236 236 236 / 98%)',
-              }}
-            >
-              <StyledMenu>
-                <StyledWrapOuter>
-                  {navbar.map((val) => (
-                    <StyledWrapMenu>
-                      <StyledSubMenu key={val.id} onClick={() => go(val.name)}>
-                        {val.title}
-                      </StyledSubMenu>
-                      <StyledHr />
-                    </StyledWrapMenu>
-                  ))}
-                </StyledWrapOuter>
-                <StyledWrapOuter2>
-                  <StyledIconButton onClick={handle}>
-                    <StyledI className="fa fa-chevron-left" />
-                    <StyledHr />
-                  </StyledIconButton>
-                </StyledWrapOuter2>
-              </StyledMenu>
-            </Drawer> */}
+            <Drawer anchor="right" open={isShow} onClose={handle}>
+              {list()}
+            </Drawer>
           </>
         ) : (
           <StyledRightContent>

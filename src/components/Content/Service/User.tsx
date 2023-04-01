@@ -41,6 +41,9 @@ const StyledName = styled(Typography)`
   justify-content: center;
   align-items: center;
   margin: 0px 10px 0px 0px !important;
+  @media (max-width: 1023px) {
+    font-size: 16px !important;
+  }
 `;
 
 const StyledWrapNameLeft = styled.div`
@@ -73,6 +76,9 @@ const StyledSearchWrap = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  @media (max-width: 1023px) {
+    width: 300px;
+  }
 `;
 
 const StyledInput = styled.input`
@@ -87,6 +93,9 @@ const StyledInput = styled.input`
   border-bottom-left-radius: 15px;
   font-size: 18px;
   padding-left: 10px;
+  @media (max-width: 1023px) {
+    width: 200px;
+  }
 `;
 
 const StyledButton = styled.button`
@@ -98,10 +107,27 @@ const StyledButton = styled.button`
   cursor: pointer;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
+  @media (max-width: 1023px) {
+    width: 80px;
+  }
 `;
 
 const StyledBorder = styled(Divider)`
   margin: 20px !important;
+`;
+
+const StyledAvatar = styled(Avatar)`
+  width: 56px !important;
+  height: 56px !important;
+  margin: 0px 20px 0px 0px;
+`;
+
+const StyledLogoutButton = styled(Button)`
+  background-color: #e14949 !important;
+  font-size: 13px;
+  @media (max-width: 1023px) {
+    font-size: 12px;
+  }
 `;
 
 function User(props: { user: UserType }): JSX.Element {
@@ -162,23 +188,14 @@ function User(props: { user: UserType }): JSX.Element {
     <StyledWrap>
       <StyledIconWrap>
         <StyledWrapNameLeft>
-          <Avatar
-            alt={userName}
-            src={photoUrl}
-            sx={{ width: 56, height: 56, margin: '0px 20px 0px 0px' }}
-          />
+          <StyledAvatar alt={userName} src={photoUrl} />
           <StyledName variant="h4">{userName}</StyledName>
         </StyledWrapNameLeft>
 
         <StyledWrapNameRight>
-          <Button
-            variant="contained"
-            endIcon={<LogoutIcon />}
-            style={{ backgroundColor: '#E14949', fontSize: 13 }}
-            onClick={() => logout()}
-          >
+          <StyledLogoutButton variant="contained" endIcon={<LogoutIcon />} onClick={() => logout()}>
             Log Out
-          </Button>
+          </StyledLogoutButton>
         </StyledWrapNameRight>
       </StyledIconWrap>
 

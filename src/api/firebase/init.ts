@@ -17,11 +17,7 @@ const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
 const signInWithGoogle = async (): Promise<void> => {
-  try {
-    await signInWithRedirect(auth, googleProvider);
-  } catch (err) {
-    console.error(err);
-  }
+  await signInWithRedirect(auth, googleProvider);
 };
 
 const logout = (): void => {

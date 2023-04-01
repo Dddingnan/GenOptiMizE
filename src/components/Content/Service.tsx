@@ -116,7 +116,7 @@ const data = [
   },
   {
     title: 'Patient',
-    content: `Start your journey to better health. <br> Consult with a licensed pharmacist to ensure that you are taking medications safely and effectively.`,
+    content: `Start your journey to better health. <br> Consult with a licensed pharmacist or genetic counselor.`,
     url: image2,
     redirectUrl: '?type=patient',
   },

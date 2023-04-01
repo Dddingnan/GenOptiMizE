@@ -134,7 +134,7 @@ function Medicine(props: {
         <TableHead>
           <TableRow>
             <StyledTableCell>Name</StyledTableCell>
-            <StyledTableCell align="right">Dose Recommendation</StyledTableCell>
+            <StyledTableCell align="left">Dose Recommendation</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -144,7 +144,7 @@ function Medicine(props: {
           ).map((row) => (
             <TableRow key={row.name}>
               <StyledTableSmallCell>{row.name}</StyledTableSmallCell>
-              <StyledTableSmallCell align="right">{row.dose}</StyledTableSmallCell>
+              <StyledTableSmallCell align="left">{row.dose}</StyledTableSmallCell>
             </TableRow>
           ))}
           {emptyRows > 0 && (

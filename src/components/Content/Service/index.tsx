@@ -34,6 +34,9 @@ const StyledContent = styled.div`
 const StyledContentWrap = styled.div`
   min-height: 500px;
   width: 50%;
+  @media (max-width: 1023px) {
+    width: 80%;
+  }
 `;
 
 const StyledGoogleWrap = styled.div`
