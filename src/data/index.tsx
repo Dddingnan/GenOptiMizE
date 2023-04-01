@@ -55,9 +55,9 @@ const data: DataType = {
       },
     ],
   },
-  Sunny: {
+  'Sunny Yeh': {
     isAdmin: true,
-    name: 'Sunny',
+    name: 'Sunny Yeh',
     uid: '1XQ5P2ah8TYdzRhqvZjb94Biec32',
     enzyme: [
       {
@@ -87,6 +87,29 @@ const data: DataType = {
       {
         name: 'Desvenlafaxine',
         dose: 'Initiate therapy with recommended starting dose.',
+      },
+    ],
+  },
+  'James Le': {
+    isAdmin: true,
+    name: 'James Le',
+    uid: 'ycj8xvh9GFMLsgOV15yND1YQBbZ2',
+    enzyme: [
+      {
+        enzyme: '2C19',
+        diploType: '17*17',
+        phenoType: 'Ultra-rapid metabolizer',
+      },
+      {
+        enzyme: '2D6',
+        diploType: '3*4',
+        phenoType: 'Poor metabolizer',
+      },
+    ],
+    medicine: [
+      {
+        name: 'Citalopram',
+        dose: 'Consider an alternative drug not predominantly metabolized by CYP2C19',
       },
     ],
   },
