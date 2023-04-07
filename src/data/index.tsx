@@ -84,10 +84,6 @@ const data: DataType = {
         name: 'Paroxetine',
         dose: 'Select alternative drug not predominantly metabolized by CYP2D6 or if paroxetine use warranted, consider a 50% reduction of recommended starting dose and titrate to response.',
       },
-      {
-        name: 'Desvenlafaxine',
-        dose: 'Initiate therapy with recommended starting dose.',
-      },
     ],
   },
   'James Le': {

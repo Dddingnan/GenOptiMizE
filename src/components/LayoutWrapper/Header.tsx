@@ -11,6 +11,7 @@ import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
 import MedicationIcon from '@mui/icons-material/Medication';
 import ApartmentIcon from '@mui/icons-material/Apartment';
+import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import { useHistory, useLocation } from 'react-router-dom';
 import { goSmothTag } from 'method';
 import icon from '../../assets/icon.png';
@@ -139,19 +140,25 @@ function Header(props: { isMobile: boolean }): JSX.Element {
         id: 0,
         title: 'HOME',
         name: 'HOME',
-        icon: <HomeIcon />,
+        icon: <HomeIcon sx={{ fontSize: 20 }} />,
       },
       {
         id: 1,
         title: 'SERVICES',
         name: 'SERVICES',
-        icon: <MedicationIcon />,
+        icon: <MedicationIcon sx={{ fontSize: 20 }} />,
       },
       {
         id: 2,
         title: 'ABOUT',
         name: 'ABOUT',
-        icon: <ApartmentIcon />,
+        icon: <ApartmentIcon sx={{ fontSize: 20 }} />,
+      },
+      {
+        id: 3,
+        title: 'CONTACT',
+        name: 'CONTACT',
+        icon: <ContactPhoneIcon sx={{ fontSize: 20 }} />,
       },
     ],
     [],
@@ -168,7 +175,7 @@ function Header(props: { isMobile: boolean }): JSX.Element {
           <ListItem key={val.title} disablePadding onClick={() => go(val.name)}>
             <ListItemButton>
               <ListItemIcon>{val.icon}</ListItemIcon>
-              <ListItemText primary={val.title} />
+              <ListItemText primary={val.title} primaryTypographyProps={{ fontSize: '16px' }} />
             </ListItemButton>
           </ListItem>
         ))}

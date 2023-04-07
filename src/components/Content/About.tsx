@@ -24,6 +24,7 @@ const StyledDownner = styled.div`
   justify-content: center;
   align-items: center;
   color: ${color.FONT_BLUE_COLOR};
+  border-bottom: solid 1px #dcdcdc;
 `;
 
 const StyledUpperLeft = styled.div`
@@ -38,29 +39,6 @@ const StyledUpperLeft = styled.div`
 const StyledUpperRight = styled.div`
   display: flex;
   flex: 1;
-  // background-image: url(${Construction});
-  // background-position: center;
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  // height: 680px;
-  // width: 680px;
-  // @media (max-width: 1023px) {
-  //   margin: 15px 0px;
-  //   display: block;
-  //   flex: none;
-  // }
-  // @media (max-width: 680px) {
-  //   height: 500px;
-  //   width: 400px;
-  // }
-  // @media (max-width: 400px) {
-  //   height: 300px;
-  //   width: 350px;
-  // }
-  // @media (max-width: 350px) {
-  //   height: 200px;
-  //   width: 300px;
-  // }
 `;
 
 const StyledImg = styled.img`
@@ -166,6 +144,7 @@ const StyledDownnerInnerWrap = styled.div`
   flex: ${(props) => (props.noFlex ? '1' : 'none')};
   justify-content: center;
   align-items: center;
+  margin: 8px 0px;
   @media (max-width: 1023px) {
     flex: none;
     width: 150px;
@@ -191,24 +170,6 @@ const StyledDownnerText = styled.div`
   text-align: center;
   font-weight: 300;
   color: ${color.DEFAULT_BACKGROUND};
-`;
-
-const StyledDownnerRight = styled.div`
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledDownnerRightInner = styled.div`
-  width: 1px;
-  height: 71px;
-  color: ${color.WHITE_COLOR};
-  background-color: ${color.WHITE_COLOR};
-  border: 1px solid ${color.WHITE_COLOR};
-  @media (max-width: 1023px) {
-    margin: 5px;
-  }
 `;
 
 const StyledDownnerOuter = styled.div`
@@ -237,18 +198,15 @@ const data = [
     name: 'Year<br>Established',
   },
   {
-    number: 206,
-    name: 'Projects<br>Completed',
+    number: 4,
+    name: 'Hospitals<br>Contracted',
   },
   {
-    number: 870,
-    name: 'Contractors<br>Appointed',
-  },
-  {
-    number: 6,
-    name: 'Awards<br>Won',
+    number: 9,
+    name: 'Pharmacies<br>Contracted',
   },
 ];
+
 function About(props: { isMobile: boolean }): JSX.Element {
   const { isMobile } = props;
   return (
@@ -281,11 +239,6 @@ function About(props: { isMobile: boolean }): JSX.Element {
                 <StyledDownnerNumber>{val.number}</StyledDownnerNumber>
                 <StyledDownnerText dangerouslySetInnerHTML={{ __html: sanitizeHtml(val.name) }} />
               </StyledDownnerInner>
-              {(!isMobile || key !== 1) && key !== 3 && (
-                <StyledDownnerRight>
-                  <StyledDownnerRightInner />
-                </StyledDownnerRight>
-              )}
             </StyledDownnerInnerWrap>
           ))}
         </StyledDownnerOuter>
