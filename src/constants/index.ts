@@ -4,8 +4,8 @@ export * from './navebar';
 export const GOOGLA_API_KEY = 'AIzaSyBheiY1amTUU_Y_RH_O-SllTrcyhvJ_ClE';
 
 export const Location = {
-  lng: -71.1012916,
-  lat: 42.3362868,
+  lng: -71.1012629,
+  lat: 42.3367556,
 };
 
 export const EMAIL_SERVICE_ID = 'service_32hdmo8';
